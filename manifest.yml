@@ -1,0 +1,14 @@
+applications:
+-  name: config-ui
+   memory: 300M
+   path: /target/config-ui.jar
+   random-route: false
+   buildpack: sap_java_buildpack
+   env:
+     TZ: GMT+5:30
+   services:
+   - orderapi-db
+   
+
+
+
