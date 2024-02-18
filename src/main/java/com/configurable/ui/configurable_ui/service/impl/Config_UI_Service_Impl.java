@@ -12,6 +12,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import com.configurable.ui.configurable_ui.dto.Response;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class Config_UI_Service_Impl implements Config_UI_Service {
 
 
     @Override
-    public ResponseEntity<?> saveData(AppDataDto appDatadto) {
+    public ResponseEntity<Response> saveData(AppDataDto appDatadto) {
         AppData appData = mapper.map(appDatadto, AppData.class);
         
         
@@ -60,7 +61,7 @@ public class Config_UI_Service_Impl implements Config_UI_Service {
             }
 
             this.configRepo.save(appData);
-            return ResponseEntity.ok("Data inserted");
+            return ResponseEntity.ok(new Response("Data inserted"));
         }
         
         
@@ -100,16 +101,16 @@ public class Config_UI_Service_Impl implements Config_UI_Service {
             this.inputData.save(inputData);
         }
        
-         return ResponseEntity.ok("Input Data Updated");
+         return ResponseEntity.ok(new Response("Input Data Updated"));
         }
 
     }
 
 
     @Override
-    public ResponseEntity<?> saveInputData(InputData appData) {
+    public ResponseEntity<Response> saveInputData(InputData appData) {
         this.inputData.save(appData);
-        return ResponseEntity.ok("Input Data inserted");
+        return ResponseEntity.ok(new Response("Input Data inserted"));
     }
 
     @Override
